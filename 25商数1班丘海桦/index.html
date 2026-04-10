@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丘海桦 - 个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: '#10B981',
+                        sky: '#0EA5E9',
+                        coral: '#F472B6',
+                        cream: '#FFFBF5',
+                        leaf: '#22C55E'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FFFBF5 0%, #E0F2FE 50%, #F0FDF4 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0EA5E9 0%, #10B981 100%);
+        }
+        .card-gradient {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .leaf-rotate {
+            animation: leafRotate 4s ease-in-out infinite;
+        }
+        @keyframes leafRotate {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0EA5E9, #10B981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="gradient-bg text-gray-700">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 glass-effect shadow-sm z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gradient flex items-center">
+                <i class="fa fa-leaf mr-2 text-mint"></i>
+                <span>海桦的小窝</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-mint transition-colors font-medium">关于我</a>
+                <a href="#hobbies" class="text-gray-600 hover:text-mint transition-colors font-medium">兴趣爱好</a>
+                <a href="#personality" class="text-gray-600 hover:text-mint transition-colors font-medium">性格特点</a>
+                <a href="#contact" class="text-gray-600 hover:text-mint transition-colors font-medium">联系方式</a>
+            </div>
+            <button class="md:hidden text-gray-600" onclick="toggleMenu()">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/95 px-6 py-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="text-gray-600 hover:text-mint transition-colors font-medium" onclick="toggleMenu()">关于我</a>
+                <a href="#hobbies" class="text-gray-600 hover:text-mint transition-colors font-medium" onclick="toggleMenu()">兴趣爱好</a>
+                <a href="#personality" class="text-gray-600 hover:text-mint transition-colors font-medium" onclick="toggleMenu()">性格特点</a>
+                <a href="#contact" class="text-gray-600 hover:text-mint transition-colors font-medium" onclick="toggleMenu()">联系方式</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="pt-28 pb-20 hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 text-8xl">🌿</div>
+            <div class="absolute top-20 right-20 text-6xl leaf-rotate">🍃</div>
+            <div class="absolute bottom-10 left-1/4 text-7xl">🌸</div>
+            <div class="absolute bottom-20 right-1/3 text-5xl leaf-rotate">🌱</div>
+            <div class="absolute top-1/3 right-10 text-4xl">☀️</div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                        <span class="text-sm font-medium">✨ 广东科学技术职业学院</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                        你好，我是<br>
+                        <span class="text-cream">丘海桦</span> 👋
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 text-white/90">
+                        商务数据分析与应用专业 · i人一枚<br>
+                        <span class="text-sm">活泼开朗 | 好奇心旺盛 | 热爱大自然 🌿</span>
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#about" class="bg-white text-mint px-8 py-3 rounded-full font-semibold hover:bg-cream transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            探索我的世界
+                        </a>
+                        <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-mint transition-all">
+                            联系我呀
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-2/5 flex justify-center fade-in">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center float-animation shadow-2xl">
+                            <div class="w-56 h-56 md:w-72 md:h-72 rounded-full bg-gradient-to-br from-cream to-sky/20 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-8xl mb-2">🌸</div>
+                                    <p class="text-mint font-medium text-sm">热爱生活的i人</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-coral text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg float-animation" style="animation-delay: 0.5s;">
+                            <i class="fa fa-heart text-xl"></i>
+                        </div>
+                        <div class="absolute -bottom-2 -left-6 bg-mint text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg float-animation" style="animation-delay: 1s;">
+                            <i class="fa fa-book text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFBF5"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-cream">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-mint font-medium text-sm uppercase tracking-wider">About Me</span>
+                <h2 class="text-4xl font-bold mt-2 text-gradient">关于我</h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-sky/10 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fa fa-user-circle text-2xl text-sky"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">基本信息</h3>
+                    </div>
+                    <ul class="space-y-5">
+                        <li class="flex items-center p-3 bg-sky/5 rounded-xl">
+                            <div class="w-10 h-10 bg-sky/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-graduation-cap text-sky"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">学校</p>
+                                <p class="font-medium text-gray-800">广东科学技术职业学院</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center p-3 bg-mint/5 rounded-xl">
+                            <div class="w-10 h-10 bg-mint/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-book text-mint"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">专业</p>
+                                <p class="font-medium text-gray-800">商务数据分析与应用</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center p-3 bg-coral/5 rounded-xl">
+                            <div class="w-10 h-10 bg-coral/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-heart text-coral"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">性格</p>
+                                <p class="font-medium text-gray-800">i人（内向但活泼）</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-mint/10 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fa fa-star text-2xl text-mint"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">我的特点</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start p-4 bg-gradient-to-r from-mint/5 to-transparent rounded-xl border-l-4 border-mint">
+                            <span class="text-3xl mr-4">🌟</span>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">活泼开朗</h4>
+                                <p class="text-gray-600 text-sm mt-1">虽然是个i人，但内心充满阳光，总是以积极的态度面对生活</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gradient-to-r from-sky/5 to-transparent rounded-xl border-l-4 border-sky">
+                            <span class="text-3xl mr-4">💡</span>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">好奇心旺盛</h4>
+                                <p class="text-gray-600 text-sm mt-1">对新鲜事物充满兴趣，喜欢探索未知的领域</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gradient-to-r from-leaf/5 to-transparent rounded-xl border-l-4 border-leaf">
+                            <span class="text-3xl mr-4">🌿</span>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">热爱大自然</h4>
+                                <p class="text-gray-600 text-sm mt-1">喜欢户外活动，享受大自然的宁静与美好</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 兴趣爱好 -->
+    <section id="hobbies" class="py-20 bg-gradient-to-b from-cream to-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-coral font-medium text-sm uppercase tracking-wider">Hobbies</span>
+                <h2 class="text-4xl font-bold mt-2 text-gradient">我的兴趣爱好</h2>
+                <p class="text-gray-500 mt-4 max-w-xl mx-auto">安静地享受生活中的美好时光，让心灵在字里行间和屏幕光影中旅行 ✨</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-coral/20 to-pink-200/20 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-5xl">📺</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">追剧</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">喜欢窝在角落里，追着各种剧情片，在别人的故事里感受喜怒哀乐，是最放松的时刻 🎬</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-coral/10 text-coral text-xs rounded-full">剧情片</span>
+                        <span class="px-3 py-1 bg-coral/10 text-coral text-xs rounded-full">综艺</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sky/20 to-blue-200/20 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-5xl">📚</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">看小说</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">沉浸在文字的海洋中，想象力随着每一页翻动而飞扬，文学小说是我的最爱 📖</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-sky/10 text-sky text-xs rounded-full">文学</span>
+                        <span class="px-3 py-1 bg-sky/10 text-sky text-xs rounded-full">科幻</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-mint/20 to-green-200/20 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-5xl">🌳</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">亲近自然</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">喜欢漫步在公园小径上，呼吸新鲜空气，感受大自然的治愈力量 🌱</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-mint/10 text-mint text-xs rounded-full">户外</span>
+                        <span class="px-3 py-1 bg-mint/10 text-mint text-xs rounded-full">散步</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-leaf/20 to-emerald-200/20 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-5xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">数据分析</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">在数据的海洋中寻找规律，用数据讲故事，发现隐藏在数字背后的洞察 📈</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-leaf/10 text-leaf text-xs rounded-full">Excel</span>
+                        <span class="px-3 py-1 bg-leaf/10 text-leaf text-xs rounded-full">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 性格特点 -->
+    <section id="personality" class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 text-9xl text-mint/5">🌿</div>
+        <div class="absolute bottom-0 left-0 text-9xl text-sky/5">🍃</div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-mint font-medium text-sm uppercase tracking-wider">Personality</span>
+                <h2 class="text-4xl font-bold mt-2 text-gradient">i人的多彩世界</h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">安静不是沉默，而是内心的丰盈。作为一个i人，我用独特的方式感受这个世界的美好 💫</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8">
+                    <div class="w-24 h-24 bg-gradient-to-br from-coral/20 to-pink-200/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-5xl">🌈</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">内心丰富</h3>
+                    <p class="text-gray-600">虽然外表安静，但内心世界五彩斑斓，充满了想象力和创造力</p>
+                </div>
+                <div class="text-center p-8">
+                    <div class="w-24 h-24 bg-gradient-to-br from-sky/20 to-blue-200/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-5xl">🎯</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">深度思考</h3>
+                    <p class="text-gray-600">善于观察和思考，对事物有独到的见解，喜欢深入研究感兴趣的话题</p>
+                </div>
+                <div class="text-center p-8">
+                    <div class="w-24 h-24 bg-gradient-to-br from-mint/20 to-green-200/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-5xl">🌱</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">成长型思维</h3>
+                    <p class="text-gray-600">对新鲜事物保持好奇，相信能力可以通过努力不断提升，持续学习和进步</p>
+                </div>
+            </div>
+            <div class="mt-16 bg-gradient-to-r from-sky/5 via-mint/5 to-coral/5 rounded-3xl p-8 md:p-12">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="mb-8 md:mb-0 text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">✨ i人的小确幸</h3>
+                        <p class="text-gray-600 max-w-lg">一个安静午后，一杯温热的饮品，一本好书或一部好剧，这就是我最简单的幸福 🌸</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center text-3xl">☕</div>
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center text-3xl">📖</div>
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center text-3xl">🎧</div>
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center text-3xl">🌿</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专业技能 -->
+    <section id="skills" class="py-20 bg-gradient-to-b from-white to-cream">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-sky font-medium text-sm uppercase tracking-wider">Skills</span>
+                <h2 class="text-4xl font-bold mt-2 text-gradient">专业技能</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-10 h-10 bg-sky/10 rounded-xl flex items-center justify-center mr-3">
+                            <i class="fa fa-table text-sky"></i>
+                        </span>
+                        数据分析工具
+                    </h3>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">Excel</span>
+                                <span class="text-sky font-medium">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-sky to-blue-400 h-3 rounded-full transition-all duration-1000" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">Python</span>
+                                <span class="text-sky font-medium">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-sky to-blue-400 h-3 rounded-full transition-all duration-1000" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">SQL</span>
+                                <span class="text-sky font-medium">65%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-sky to-blue-400 h-3 rounded-full transition-all duration-1000" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-10 h-10 bg-mint/10 rounded-xl flex items-center justify-center mr-3">
+                            <i class="fa fa-bookmark text-mint"></i>
+                        </span>
+                        专业知识
+                    </h3>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">统计学</span>
+                                <span class="text-mint font-medium">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-mint to-emerald-400 h-3 rounded-full transition-all duration-1000" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">市场分析</span>
+                                <span class="text-mint font-medium">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-mint to-emerald-400 h-3 rounded-full transition-all duration-1000" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">数据可视化</span>
+                                <span class="text-mint font-medium">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-mint to-emerald-400 h-3 rounded-full transition-all duration-1000" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="w-10 h-10 bg-coral/10 rounded-xl flex items-center justify-center mr-3">
+                            <i class="fa fa-user text-coral"></i>
+                        </span>
+                        软技能
+                    </h3>
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">逻辑思维</span>
+                                <span class="text-coral font-medium">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-coral to-pink-400 h-3 rounded-full transition-all duration-1000" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">学习能力</span>
+                                <span class="text-coral font-medium">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-coral to-pink-400 h-3 rounded-full transition-all duration-1000" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-medium">团队协作</span>
+                                <span class="text-coral font-medium">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-coral to-pink-400 h-3 rounded-full transition-all duration-1000" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 bg-cream relative overflow-hidden">
+        <div class="absolute top-10 left-10 text-6xl opacity-10">🌸</div>
+        <div class="absolute bottom-10 right-10 text-6xl opacity-10">🌿</div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-mint font-medium text-sm uppercase tracking-wider">Contact</span>
+                <h2 class="text-4xl font-bold mt-2 text-gradient">联系我</h2>
+                <p class="text-gray-500 mt-4">如果你也想交个朋友，欢迎联系我呀～ 🌟</p>
+            </div>
+            <div class="max-w-lg mx-auto bg-white p-10 rounded-3xl shadow-xl">
+                <div class="space-y-6">
+                    <div class="flex items-center p-4 bg-sky/5 rounded-2xl hover:bg-sky/10 transition-colors">
+                        <div class="w-14 h-14 bg-sky/10 rounded-2xl flex items-center justify-center mr-5">
+                            <i class="fa fa-envelope text-xl text-sky"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">邮箱</p>
+                            <p class="font-medium text-gray-800">haihua_qiu@email.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-mint/5 rounded-2xl hover:bg-mint/10 transition-colors">
+                        <div class="w-14 h-14 bg-mint/10 rounded-2xl flex items-center justify-center mr-5">
+                            <i class="fa fa-map-marker text-xl text-mint"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">所在地</p>
+                            <p class="font-medium text-gray-800">广东省珠海市</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-coral/5 rounded-2xl hover:bg-coral/10 transition-colors">
+                        <div class="w-14 h-14 bg-coral/10 rounded-2xl flex items-center justify-center mr-5">
+                            <i class="fa fa-heart text-xl text-coral"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">学校</p>
+                            <p class="font-medium text-gray-800">广东科学技术职业学院</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 pt-8 border-t border-gray-100">
+                    <p class="text-center text-gray-500 mb-6">在社交平台上找我</p>
+                    <div class="flex justify-center gap-5">
+                        <a href="#" class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-14 h-14 bg-gradient-to-br from-red-400 to-orange-500 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-14 h-14 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gradient-to-r from-sky to-mint text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-6">
+                <span class="text-5xl">🌸</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">感谢访问我的小窝</h3>
+            <p class="text-white/80 mb-6">期待与你相遇在这个美好的世界 ✨</p>
+            <div class="flex justify-center gap-8 text-sm">
+                <span>广东科学技术职业学院</span>
+                <span>·</span>
+                <span>商务数据分析与应用</span>
+            </div>
+            <div class="mt-8 pt-6 border-t border-white/20">
+                <p class="text-white/60 text-sm">© 2026 丘海桦 · All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('shadow-sm');
+            }
+        });
+
+        // 移动端菜单切换
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
