@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python基础课程学习 - 丘海桦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #6b8e23;
+            --accent-color: #f5deb3;
+            --text-color: #333;
+            --bg-color: #f9f5e9;
+            --light-green: #e8f5e8;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(rgba(249, 245, 233, 0.8), rgba(249, 245, 233, 0.8)),
+                url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=soft%20nature%20background%20with%20leaves%20and%20sunlight&image_size=landscape_16_9');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        nav {
+            background: rgba(45, 80, 22, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(45, 80, 22, 0.9);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 30px 0 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin: 20px 0 15px;
+        }
+        
+        h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 15px 0 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .course-overview {
+            margin-bottom: 30px;
+        }
+        
+        .course-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .module-card {
+            background: var(--light-green);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+        
+        .module-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .module-content {
+            margin-top: 15px;
+        }
+        
+        .module-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .module-content li {
+            margin-bottom: 8px;
+        }
+        
+        .learning-resources {
+            margin-top: 30px;
+        }
+        
+        .resources-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .resources-list li {
+            margin-bottom: 10px;
+        }
+        
+        .resources-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .resources-list a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(45, 80, 22, 0.9);
+            color: white;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .course-modules {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">丘海桦</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">关于我</a></li>
+                    <li><a href="index.html#hobbies">兴趣爱好</a></li>
+                    <li><a href="index.html#goals">未来规划</a></li>
+                    <li><a href="python-course.html">Python课程</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header>
+            <h1>Python基础课程学习</h1>
+            <p class="subtitle">从基础到进阶，全面掌握Python编程技能</p>
+            <p>为数据分析打下坚实的编程基础</p>
+        </header>
+        
+        <section class="course-overview">
+            <h2>课程概述</h2>
+            <p>本课程将从基础开始，逐步掌握Python编程技能，为数据分析打下坚实基础。课程内容涵盖编程基础、语法、数据结构、函数、面向对象和文件操作等核心内容。</p>
+        </section>
+        
+        <section class="course-content">
+            <h2>学习模块</h2>
+            <div class="course-modules">
+                <div class="module-card">
+                    <h4>模块1：基础编程素养</h4>
+                    <div class="module-content">
+                        <p>编程思维培养与基础概念</p>
+                        <ul>
+                            <li>编程的基本概念</li>
+                            <li>算法与逻辑思维</li>
+                            <li>问题分解与解决</li>
+                            <li>调试与错误处理</li>
+                            <li>代码风格与规范</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <h4>模块2：Python语法</h4>
+                    <div class="module-content">
+                        <p>Python语言基础</p>
+                        <ul>
+                            <li>变量与数据类型</li>
+                            <li>运算符与表达式</li>
+                            <li>控制流语句</li>
+                            <li>输入输出操作</li>
+                            <li>注释与文档</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <h4>模块3：数据结构</h4>
+                    <div class="module-content">
+                        <p>Python内置数据结构</p>
+                        <ul>
+                            <li>列表（List）</li>
+                            <li>元组（Tuple）</li>
+                            <li>字典（Dictionary）</li>
+                            <li>集合（Set）</li>
+                            <li>数据结构的选择与应用</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <h4>模块4：函数与模块</h4>
+                    <div class="module-content">
+                        <p>代码组织与复用</p>
+                        <ul>
+                            <li>函数定义与调用</li>
+                            <li>参数传递与返回值</li>
+                            <li>作用域与闭包</li>
+                            <li>模块与包</li>
+                            <li>标准库的使用</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <h4>模块5：面向对象编程</h4>
+                    <div class="module-content">
+                        <p>Python面向对象特性</p>
+                        <ul>
+                            <li>类与对象</li>
+                            <li>继承与多态</li>
+                            <li>封装与抽象</li>
+                            <li>特殊方法</li>
+                            <li>设计模式基础</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <h4>模块6：文件操作与异常处理</h4>
+                    <div class="module-content">
+                        <p>文件处理与错误管理</p>
+                        <ul>
+                            <li>文件的打开与关闭</li>
+                            <li>文件读写操作</li>
+                            <li>异常捕获与处理</li>
+                            <li>上下文管理器</li>
+                            <li>文件与目录操作</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="learning-resources">
+            <h2>学习资源</h2>
+            <ul class="resources-list">
+                <li><a href="#">Python官方文档</a></li>
+                <li><a href="#">菜鸟教程 - Python入门</a></li>
+                <li><a href="#">DataCamp - Python数据分析</a></li>
+                <li><a href="#">GitHub - 数据分析项目实战</a></li>
+                <li><a href="#">Python编程：从入门到实践</a></li>
+                <li><a href="#">Python数据分析入门</a></li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>© 2026 丘海桦个人主页 | 大自然风格设计</p>
+        </footer>
+    </div>
+</body>
+</html>
