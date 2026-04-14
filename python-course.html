@@ -201,6 +201,38 @@
             text-decoration: underline;
         }
         
+        .learning-tips,
+        .ai-strategy {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .learning-tips:hover,
+        .ai-strategy:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .learning-tips ul,
+        .ai-strategy ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .learning-tips li,
+        .ai-strategy li {
+            margin-bottom: 10px;
+        }
+        
+        .learning-tips strong,
+        .ai-strategy strong {
+            color: var(--primary-color);
+        }
+        
         footer {
             text-align: center;
             padding: 30px;
@@ -247,6 +279,8 @@
                 <ul class="nav-links">
                     <li><a href="python-course.html#overview">课程概述</a></li>
                     <li><a href="python-course.html#modules">学习模块</a></li>
+                    <li><a href="python-course.html#tips">避坑指南</a></li>
+                    <li><a href="python-course.html#ai-strategy">AI学习策略</a></li>
                     <li><a href="python-course.html#resources">学习资源</a></li>
                     <li><a href="index.html">返回首页</a></li>
                 </ul>
@@ -263,14 +297,14 @@
         
         <section id="overview" class="course-overview">
             <h2>课程概述</h2>
-            <p>本课程将从基础开始，逐步掌握Python编程技能，为数据分析打下坚实基础。课程内容涵盖编程基础、语法、数据结构、函数、面向对象和文件操作等核心内容。</p>
+            <p>在AI编程日益成熟的2026年，学习Python基础的重点必须从"语法记忆"转向"逻辑构建与工具驾驭"。本课程遵循"减法设计"原则，剔除底层枯燥细节，聚焦于支撑AI应用与数据分析的核心能力。</p>
             <p>通过本课程的学习，您将能够：</p>
             <ul>
-                <li>掌握Python编程的基本概念和语法</li>
-                <li>理解并应用各种数据结构</li>
-                <li>编写模块化、可维护的代码</li>
-                <li>处理文件和异常情况</li>
-                <li>为数据分析工作做好准备</li>
+                <li>构建与AI对话的底层思维能力</li>
+                <li>掌握支撑AI应用与数据分析的核心技能</li>
+                <li>学会使用AI工具辅助编程</li>
+                <li>具备解决真实业务问题的编程能力</li>
+                <li>为进阶学习AI与数据分析打下坚实基础</li>
             </ul>
         </section>
         
@@ -278,84 +312,69 @@
             <h2>学习模块</h2>
             <div class="course-modules">
                 <div class="module-card">
-                    <h4>模块1：基础编程素养</h4>
+                    <h4>模块1：核心语法与逻辑控制</h4>
                     <div class="module-content">
-                        <p>编程思维培养与基础概念</p>
+                        <p>构建与AI对话的"底层思维"</p>
                         <ul>
-                            <li>编程的基本概念</li>
-                            <li>算法与逻辑思维</li>
-                            <li>问题分解与解决</li>
-                            <li>调试与错误处理</li>
-                            <li>代码风格与规范</li>
+                            <li>变量与动态类型系统：理解Python的动态类型特性，掌握基本数据类型</li>
+                            <li>流程控制（条件与循环）：熟练使用if/elif/else进行条件判断，以及for和while循环</li>
+                            <li>输入输出与交互：掌握print()格式化输出与input()获取用户输入</li>
                         </ul>
                     </div>
                 </div>
                 <div class="module-card">
-                    <h4>模块2：Python语法</h4>
+                    <h4>模块2：数据容器与结构化处理</h4>
                     <div class="module-content">
-                        <p>Python语言基础</p>
+                        <p>AI与数据分析的"弹药库"</p>
                         <ul>
-                            <li>变量与数据类型</li>
-                            <li>运算符与表达式</li>
-                            <li>控制流语句</li>
-                            <li>输入输出操作</li>
-                            <li>注释与文档</li>
+                            <li>列表与元组：掌握列表的索引、切片、增删改查及遍历</li>
+                            <li>字典：重点掌握字典的构建、查找与遍历，理解键值对结构</li>
+                            <li>集合：掌握其"去重"和集合运算的核心特性</li>
                         </ul>
                     </div>
                 </div>
                 <div class="module-card">
-                    <h4>模块3：数据结构</h4>
+                    <h4>模块3：函数与模块化设计</h4>
                     <div class="module-content">
-                        <p>Python内置数据结构</p>
+                        <p>驾驭复杂任务的"封装术"</p>
                         <ul>
-                            <li>列表（List）</li>
-                            <li>元组（Tuple）</li>
-                            <li>字典（Dictionary）</li>
-                            <li>集合（Set）</li>
-                            <li>数据结构的选择与应用</li>
+                            <li>函数定义与参数灵活传递：掌握def定义函数，理解位置参数、关键字参数与默认参数</li>
+                            <li>匿名函数：掌握简短的逻辑表达方式，在数据处理中极为常用</li>
+                            <li>模块与包的调用：掌握import的机制，知道如何通过pip安装第三方库</li>
                         </ul>
                     </div>
                 </div>
                 <div class="module-card">
-                    <h4>模块4：函数与模块</h4>
+                    <h4>模块4：数据持久化与异常防护</h4>
                     <div class="module-content">
-                        <p>代码组织与复用</p>
+                        <p>连接真实业务的"护城河"</p>
                         <ul>
-                            <li>函数定义与调用</li>
-                            <li>参数传递与返回值</li>
-                            <li>作用域与闭包</li>
-                            <li>模块与包</li>
-                            <li>标准库的使用</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="module-card">
-                    <h4>模块5：面向对象编程</h4>
-                    <div class="module-content">
-                        <p>Python面向对象特性</p>
-                        <ul>
-                            <li>类与对象</li>
-                            <li>继承与多态</li>
-                            <li>封装与抽象</li>
-                            <li>特殊方法</li>
-                            <li>设计模式基础</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="module-card">
-                    <h4>模块6：文件操作与异常处理</h4>
-                    <div class="module-content">
-                        <p>文件处理与错误管理</p>
-                        <ul>
-                            <li>文件的打开与关闭</li>
-                            <li>文件读写操作</li>
-                            <li>异常捕获与处理</li>
-                            <li>上下文管理器</li>
-                            <li>文件与目录操作</li>
+                            <li>文件与IO操作：掌握文本文件的读写，尤其是使用with语句管理文件资源</li>
+                            <li>JSON数据处理：熟练掌握Python对象与JSON字符串的相互转换</li>
+                            <li>异常处理：掌握try...except机制，防止程序崩溃</li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </section>
+        
+        <section id="tips" class="learning-tips">
+            <h2>避坑与减法指南</h2>
+            <p>为了让学习更高效，以下内容在基础阶段完全可以删减或后置：</p>
+            <ul>
+                <li><strong>剔除Turtle绘图等趣味但非核心模块</strong>：这些模块对理解AI逻辑无直接帮助</li>
+                <li><strong>暂缓复杂的面向对象编程（OOP）</strong>：对于商务数据分析等非纯开发岗位，初学阶段只需了解基本概念</li>
+                <li><strong>弱化正则表达式与底层原理</strong>：利用AI大模型或字符串内置方法即可解决大部分文本提取问题</li>
+            </ul>
+        </section>
+        
+        <section id="ai-strategy" class="ai-strategy">
+            <h2>AI赋能的高效学习策略</h2>
+            <ul>
+                <li><strong>策略1：用AI做"超级助教"</strong>：遇到看不懂的报错或代码，直接丢给AI，让其逐行解释逻辑</li>
+                <li><strong>策略2：以"问题驱动"代替"语法驱动"</strong>：为了"批量重命名100个Excel文件"去学循环，带着真实业务痛点学习</li>
+                <li><strong>策略3：掌握Pythonic写法</strong>：学会像enumerate()遍历、列表推导式等惯用法，提升代码的简洁度与可读性</li>
+            </ul>
         </section>
         
         <section id="resources" class="learning-resources">
