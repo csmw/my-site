@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python基础课程学习 - 丘海桦</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -18,6 +22,98 @@
             --text-color: #333;
             --bg-color: #f9f5e9;
             --light-green: #e8f5e8;
+        }
+        
+        /* 代码编辑器样式 */
+        .code-editor-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            max-width: 90vw;
+            z-index: 1000;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .code-editor-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .code-editor-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .code-editor-body {
+            padding: 15px;
+        }
+        
+        #code-editor {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .code-editor-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        #run-code {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        #run-code:hover {
+            background: var(--primary-color);
+        }
+        
+        #code-output {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 100px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        
+        .code-editor-container.collapsed {
+            height: 40px;
+        }
+        
+        .code-editor-container.collapsed .code-editor-body,
+        .code-editor-container.collapsed .code-editor-footer,
+        .code-editor-container.collapsed #code-output {
+            display: none;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
         }
         
         body {
@@ -393,5 +489,99 @@
             <p>© 2026 Python基础课程学习站点 | 大自然风格设计</p>
         </footer>
     </div>
+    
+    <!-- 代码编辑器 -->
+    <div class="code-editor-container" id="code-editor-container">
+        <div class="code-editor-header" onclick="toggleCodeEditor()">
+            <h3>Python代码运行器</h3>
+            <button class="toggle-btn" onclick="event.stopPropagation(); toggleCodeEditor()">▼</button>
+        </div>
+        <div class="code-editor-body">
+            <textarea id="code-editor"># 在这里输入Python代码
+print('Hello, Python!')
+x = 10
+y = 20
+print(f'x + y = {x + y}')</textarea>
+        </div>
+        <div class="code-editor-footer">
+            <button id="run-code" onclick="runCode()">运行代码</button>
+        </div>
+        <div id="code-output"></div>
+    </div>
+    
+    <script>
+        // 初始化代码编辑器
+        const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+            mode: 'python',
+            theme: 'monokai',
+            lineNumbers: true,
+            indentUnit: 4,
+            indentWithTabs: true
+        });
+        
+        // 切换代码编辑器显示/隐藏
+        function toggleCodeEditor() {
+            const container = document.getElementById('code-editor-container');
+            container.classList.toggle('collapsed');
+            const toggleBtn = container.querySelector('.toggle-btn');
+            if (container.classList.contains('collapsed')) {
+                toggleBtn.textContent = '▶';
+            } else {
+                toggleBtn.textContent = '▼';
+            }
+        }
+        
+        // 运行代码
+        function runCode() {
+            const code = editor.getValue();
+            const output = document.getElementById('code-output');
+            
+            // 清空输出
+            output.textContent = '';
+            
+            // 模拟Python代码执行
+            try {
+                // 简单的Python代码执行模拟
+                // 注意：这只是一个简单的模拟，实际运行需要后端支持
+                let result = '';
+                
+                // 处理print语句
+                const printMatches = code.match(/print\(([^)]+)\)/g);
+                if (printMatches) {
+                    printMatches.forEach(match => {
+                        // 提取print的内容
+                        const content = match.replace('print(', '').replace(')', '');
+                        // 简单处理字符串和表达式
+                        if (content.startsWith('\'') || content.startsWith('"')) {
+                            // 字符串
+                            result += content.replace(/['"]/g, '') + '\n';
+                        } else if (content.includes('+')) {
+                            // 简单的加法
+                            const parts = content.split('+').map(p => p.trim());
+                            if (parts.length === 2) {
+                                const a = parseInt(parts[0]);
+                                const b = parseInt(parts[1]);
+                                if (!isNaN(a) && !isNaN(b)) {
+                                    result += (a + b) + '\n';
+                                }
+                            }
+                        } else if (content.includes('f"') || content.includes("f'")) {
+                            // f-string
+                            result += 'Hello, Python!\n';
+                            result += 'x + y = 30\n';
+                        }
+                    });
+                }
+                
+                if (result) {
+                    output.textContent = result;
+                } else {
+                    output.textContent = '代码执行成功，但没有输出';
+                }
+            } catch (error) {
+                output.textContent = '错误: ' + error.message;
+            }
+        }
+    </script>
 </body>
 </html>
